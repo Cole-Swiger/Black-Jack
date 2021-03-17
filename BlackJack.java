@@ -25,12 +25,18 @@ import java.util.Scanner;
 public class BlackJack {
 
    private Deck deck;
-   private Random rand;				//for drawing random cards
+
+   //for drawing random cards
+   private Random rand;				
    private int total = 0;
    private int cpuTotal = 0;
-   private int numberOfAces = 0;		//The value of aces can change mid game
+
+   //The value of aces can change mid game
+   private int numberOfAces = 0;		
    private int cpuAces = 0;
-   private Scanner scan;			//for user input
+
+   //for user input
+   private Scanner scan;			
 
    public BlackJack() {
 	   deck = new Deck();
@@ -43,15 +49,18 @@ public class BlackJack {
 	   //Do this for computer and player
 	   Card cpuCard1 = drawCard();
 	   Card cpuCard2 = drawCard();
-	   ifIsAce(cpuCard1, "Computer");      //keeping track of all the aces
+
+	   //keeping track of all the aces
+	   ifIsAce(cpuCard1, "Computer");      
 	   ifIsAce(cpuCard2, "Computer");
 	   
 	   Card card1 = drawCard();
 	   Card card2 = drawCard();
 	   ifIsAce(card1, "Player");
 	   ifIsAce(card2, "Player");
-	   
-	   total += card1.getValue() + card2.getValue();		//Add the values together
+
+	   //Add the values together
+	   total += card1.getValue() + card2.getValue();		
 	   cpuTotal += cpuCard1.getValue() + cpuCard2.getValue();
 	   
 	   //check if cpuTotal is 21
@@ -87,8 +96,9 @@ public class BlackJack {
 	   System.out.println();
 	   firstResponse();
    }
-   
-   public Card drawCard() {		//using the draw method from Deck class
+
+   //using the draw method from Deck class
+   public Card drawCard() {		
 	   Card c = deck.draw(rand.nextInt(deck.getDeckSize()));
 	   deck.removeCard(c);
 	   return c;
